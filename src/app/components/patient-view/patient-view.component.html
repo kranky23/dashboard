@@ -1,0 +1,135 @@
+<app-side-bar></app-side-bar>
+<app-header></app-header>
+
+<div class="row pt-5 main-content-container" style="padding-bottom: 2%; border-bottom: 1px solid #d5d5d5; box-shadow: 1px 2px 2px #fcfcfc;">
+    <div class="col-sm-8">
+        <div class="alert viewbar">
+            Patient Details
+        </div>
+        <div class="row">
+            <div class="col-sm-6" *ngFor="let p of singlePatient | keyvalue">
+                <div class="card mb-1" style="width: 18rem;">
+                    <div class="card-body">
+                        {{p.key}}: {{p.value ? p.value : 'N/A'}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4 text-center">
+        <div class="container-align">
+            <!-- <img src="#" alt="#"> -->
+            <i class="fa fa-user" style="font-size: 200px; color: grey;"></i>
+        </div>
+    </div>
+</div>
+
+<div class="row my-3 main-content-container" style="border-bottom: 1px solid #d5d5d5; box-shadow: 1px 2px 2px #fcfcfc;">
+    <div class="col-sm-6 text-center">
+      <div class="alert viewbar">Patient Section Progress</div>
+      <div id="specificChart" class="donut-size">
+        <div class="pie-wrapper">
+          <span class="label">
+              <span class="num">0</span><span class="smaller">%</span>
+          </span>
+          <div class="pie">
+            <div class="left-side half-circle"></div>
+            <div class="right-side half-circle"></div>
+          </div>
+          <div class="shadow"></div>
+        </div>
+      </div>
+      <div class="col-sm-12 text-center my-2">
+        <a routerLink="/patient-response" class="badge badge-success">Patient Response</a>
+      </div>
+    </div>
+    <div class="col-sm-6 text-center">
+      <div class="alert viewbar">Recent Moods</div>
+      <canvas baseChart width="400" height="200"
+              [data]="lineChartData"
+              [options]="lineChartOptions"
+              [type]="lineChartType"></canvas>
+    </div>
+</div>
+
+<div class="row mt-5" style="border-bottom: 1px solid #d5d5d5; box-shadow: 1px 2px 2px #fcfcfc;">
+    <div class="col-sm-6 text-center setorder">
+      <div class="container-align-link">
+        <div class="alert alert-secondary" *ngIf="ordersetSuccess"><div class="badge badge-success">{{ordersetSuccess}}</div></div>
+        <div class="alert alert-secondary" *ngIf="ordersetUnsuccess"><div class="badge badge-danger">{{ordersetUnsuccess}}</div></div>
+        <button class="btn btn-secondary " data-toggle="modal" data-target="#modalContactForm"  (click)="callOrderSet()">Set Order</button>
+        <button class="btn btn-secondary vieworder" (click)="onMessagePatient()">Message</button>
+<!--        <button class="btn btn-secondary vieworder" data-toggle="modal" data-target="#modalViewOrder">View Order</button>-->
+
+      </div>
+    </div>
+    <div class="col-sm-6 text-center">
+    </div>
+</div>
+
+<!--Modal class for orderSet form-->
+<div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Section Order For Patient</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <div class="alert alert-secondary" *ngIf="orderIsavail"><div class="badge badge-success">Order Already Added in given sequence</div></div>
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">Second Position</label>
+          <input [(ngModel)]="credentials.second" type="text" id="form34" name="second" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">third Position</label>
+          <input [(ngModel)]="credentials.third" type="text" id="form35" name="third" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">fourth Position</label>
+          <input [(ngModel)]="credentials.fourth" type="text" id="form36" name="fourth" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">fifth Position</label>
+          <input [(ngModel)]="credentials.fifth" type="text" id="form37" name="fifth" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">Sixth Position</label>
+          <input [(ngModel)]="credentials.sixth" type="text" id="form38" name="sixth" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">Seventh Position</label>
+          <input [(ngModel)]="credentials.seventh" type="text" id="form39" name="seventh" class="form-control validate">
+        </div>
+
+        <div class="md-form mb-2">
+          <!-- <i class="fa-user prefix custom-icon"></i> -->
+          <label data-error="wrong" class="custom-form-label" data-success="right" for="form34">Eigth Position</label>
+          <input [(ngModel)]="credentials.eight" type="text" id="form40" name="eight" class="form-control validate">
+        </div>
+
+      </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <button class="btn btn-secondary" type="button" (click)="addOrdetSet()" [disabled]="orderIsavail" data-dismiss="modal" aria-label="Close">Set Order<i class="fa fa-paper-plane-o ml-1"></i></button>
+        <button class="btn btn-secondary" type="button" (click)="resetOrdetSet()" [disabled]="!orderIsavail" data-dismiss="modal" aria-label="Close">Force Reset Order<i class="fa fa-paper-plane-o ml-1"></i></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,106 @@
+<app-side-bar></app-side-bar>
+<app-header></app-header>
+<div class="row main-content-container" >
+
+  <section class="wrapper">
+    <div class="container clearfix">
+
+      <div class="chat">
+        <div class="chat-header clearfix">
+          <div class="chat-about">
+            <div class="chat-with">Chat</div>
+<!--            <div class="chat-num-messages">already 1 902 messages</div>-->
+          </div>
+          <i class="fa fa-star"></i>
+        </div> <!-- end chat-header -->
+
+        <div class="chat-history" >
+          <ul style="list-style-type:none;" *ngFor="let message of messages">
+            <li class="clearfix">
+              <div *ngIf="!message.postedBy">
+                <div class="message-data align-right" >
+                  <span class="message-data-time" >{{message.time}}</span> &nbsp; &nbsp;
+                  <span class="message-data-name" >{{fname}}</span>
+
+                </div>
+                <div class="message other-message float-right align-right">
+                  {{message.message}}
+                  <span class="message-data-lastseen" *ngIf="!message.readReceipt">
+                    <img src="https://img.icons8.com/glyph-neue/20/ffffff/double-tick.png"/>
+                </span>
+                <span class="message-data-lastseen" *ngIf="message.readReceipt">
+                  <img src="https://img.icons8.com/glyph-neue/20/4a90e2/double-tick.png"/>
+                </span>
+                </div>
+
+              </div>
+            </li>
+
+            <li>
+              <div *ngIf="message.postedBy">
+                <div class="message-data">
+                  <span class="message-data-name"><i class="fa fa-circle online"></i> Patient</span>
+                  <span class="message-data-time">{{message.time}}</span>
+                </div>
+                <div class="message my-message" >
+                  {{message.message}}
+                </div>
+              </div>
+            </li>
+
+            <!-- <li class="clearfix">
+              <div class="message-data align-right">
+                <span class="message-data-time" >10:14 AM, Today</span> &nbsp; &nbsp;
+                <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
+
+              </div>
+              <div class="message other-message float-right">
+                Well I am not sure. The rest of the team is not here yet. Maybe in an hour or so? Have you faced any problems at the last phase of the project?
+              </div>
+            </li>
+
+            <li>
+              <div class="message-data">
+                <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                <span class="message-data-time">10:20 AM, Today</span>
+              </div>
+              <div class="message my-message">
+                Actually everything was fine. I'm very excited to show this to our team.
+              </div>
+            </li>
+
+            <li>
+              <div class="message-data">
+                <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
+                <span class="message-data-time">10:31 AM, Today</span>
+              </div>
+              <i class="fa fa-circle online"></i>
+              <i class="fa fa-circle online" style="color: #AED2A6"></i>
+              <i class="fa fa-circle online" style="color:#DAE9DA"></i>
+            </li>
+             -->
+          </ul>
+
+        </div> <!-- end chat-history -->
+
+        <div class="chat-message clearfix">
+            <textarea  class="comment" type="text"
+                       name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3" [(ngModel)]="messageToBeSent.message">
+        </textarea>
+
+          <button class="btn btn-secondary" type="button" [disabled]="!messageToBeSent.message" (click)="onSendMessage(messageToBeSent)">Send Message</button>
+          <button class="btn btn-secondary" type="button" (click)="loadNewMessages()">Load New Messages!</button>
+
+        </div> <!-- end chat-message -->
+
+      </div> <!-- end chat -->
+
+    </div> <!-- end container -->
+
+
+
+
+  </section>
+
+
+</div>
