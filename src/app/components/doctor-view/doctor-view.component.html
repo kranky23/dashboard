@@ -5,6 +5,7 @@
         <div class="alert alert-secondary">
             Doctor Details
         </div>
+        <div *ngIf="doctorDetailsLoaded">
         <div class="row">
           <div class="col-sm-6" *ngFor="let doctor of doctorDetailsForPrint | keyvalue">
             <div class="card mb-1" style="width: 18rem;">
@@ -14,6 +15,7 @@
             </div>
           </div>
         </div>
+      </div>
     </div>
     <div class="col-sm-4">
         <div class="container-align">
@@ -33,6 +35,9 @@
       <input type="checkbox" class="custom-control-input" id="customSwitches"
       [checked]="isAvail">
       <label class="custom-control-label" for="customSwitches" >Currently Available / Free</label>
+    </div>
+    <div class="container-align-button">
+      <button class="btn btn-secondary " (click)="toSelfNote()">Self Note</button>
     </div>
     <div class="container-align-button">
       <button class="btn btn-secondary " data-toggle="modal" data-target="#modalSpecialistForm" (click)="getAllspecialist()">View Specialist</button>

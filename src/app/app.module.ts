@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DoctorLoginComponent } from './components/doctor-login/doctor-login.component';
 import { PatientMessageComponent } from './components/patient-message/patient-message.component';
 import { MessageSpecialistComponent } from './components/message-specialist/message-specialist.component';
+import { SelfNoteComponent } from './components/self-note/self-note.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MessageSpecialistComponent } from './components/message-specialist/mess
     PatientResponseViewComponent,
     DoctorLoginComponent,
     PatientMessageComponent,
-    MessageSpecialistComponent
+    MessageSpecialistComponent,
+    SelfNoteComponent
   ],
   imports: [
     BrowserModule,

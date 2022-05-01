@@ -47,4 +47,29 @@ export class MessagesService {
     )
     return this.http.post<any>(`${this.baseUrl}/updateReadReceipt/${pat_id}`,true,{'headers':header, responseType: 'json'});
   }
+
+  sendDoctorNotes(noteToBeSent:any,doc_id:any)
+  {
+    let token = localStorage.getItem("token");
+    let header = new HttpHeaders(
+      {
+        Authorization: "Bearer " + token
+      }
+    )
+    return this.http.post<any>(`${this.baseUrl}/postNote/${doc_id}`, noteToBeSent, {'headers':header, responseType: 'json'});
+  }
+
+  getDoctorNotes(doc_id:any)
+  {
+    let token = localStorage.getItem("token");
+    console.log(token);
+    let header = new HttpHeaders(
+      {
+        Authorization: "Bearer " + token
+      }
+    )
+    return this.http.get<any[]>(`${this.baseUrl}/getNotes/${doc_id}`, {'headers':header, responseType: 'json'});
+  }
 }
+
+  

@@ -7,6 +7,7 @@ import { PatientViewComponent } from './components/patient-view/patient-view.com
 import { AuthGuard } from './guards/auth.guard';
 import {PatientMessageComponent} from "./components/patient-message/patient-message.component";
 import { MessageSpecialistComponent } from './components/message-specialist/message-specialist.component';
+import { SelfNoteComponent } from './components/self-note/self-note.component';
 
 const routes: Routes = [
   {
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'patient-view/:pid', component: PatientViewComponent, canActivate: [AuthGuard]},
   { path: 'patient-response', component: PatientResponseViewComponent, canActivate: [AuthGuard]},
   { path: 'patient-message/:pid', component: PatientMessageComponent, canActivate: [AuthGuard]},
-  { path: 'patient-specialist/:spec_id', component: MessageSpecialistComponent, canActivate: [AuthGuard]}
+  { path: 'patient-specialist/:spec_id', component: MessageSpecialistComponent, canActivate: [AuthGuard]},
+  { path: 'self-note/:doc_id', component: SelfNoteComponent}
 ];
 
 @NgModule({

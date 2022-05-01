@@ -31,6 +31,8 @@ export class DoctorViewComponent implements OnInit {
   specialistData : specialist[] | undefined;
   linkGenerationMessage : string =""
   linkGenerationError : string=""
+
+  doctorDetailsLoaded:boolean =  false;
   constructor(private loginService: DoctorLoginService,
               private dataService : DataServices,
               private router:Router) { }
@@ -38,9 +40,14 @@ export class DoctorViewComponent implements OnInit {
   ngOnInit(): void {
     this.loginService.getDoctor().subscribe(
       (value: any) => {
-        this.doctorDetils = {username: value.username, id: value.id, fname: value.fname, lname: value.lname, isAvail: value.isAvail}
-        this.doctorDetailsForPrint = {Username: value.username, Id: value.id, "First Name": value.fname, "Last Name": value.lname}
-        this.isAvail = (this.doctorDetils.isAvail==="true")?true:false
+        console.log("called init method")
+        console.log("value is ",value)
+        this.doctorDetils = {username: value.username, id: value.id, fname: value.fname, lname: value.lname, isAvail: value.isAvail};
+        this.doctorDetailsForPrint = {Username: value.username, Id: value.id, "First Name": value.fname, "Last Name": value.lname};
+        this.isAvail = (this.doctorDetils.isAvail==="true")?true:false;
+        this.doctorDetailsLoaded = true;
+        console.log(this.doctorDetils);
+        console.log(this.doctorDetailsForPrint);
       },
       (err:any) => {
         console.log(err)
@@ -136,6 +143,10 @@ export class DoctorViewComponent implements OnInit {
 
   specialistMessage(spec_id:string){
     this.router.navigate(['/patient-specialist', spec_id]);
+  }
+
+  toSelfNote(){
+    this.router.navigate(['/self-note', localStorage.getItem('doctorId')]);
   }
 
 }
