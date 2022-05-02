@@ -259,7 +259,7 @@ export class PatientViewComponent implements OnInit {
       },
       error=>{
         console.log(error)
-        this.ordersetUnsuccess = "Order Reseted Successfully"
+        this.ordersetUnsuccess = "Order Reset Done!"
         setTimeout(()=>{                           //<<<---using ()=> syntax
           this.ordersetUnsuccess = "";
         }, 5000);
