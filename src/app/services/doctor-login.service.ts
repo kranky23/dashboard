@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -58,5 +58,17 @@ export class DoctorLoginService {
     // console.log("GET TOKEN ",localStorage.getItem('token'))
 
     return localStorage.getItem('token');
+  }
+
+  getDoctorDetails(doc_id:any)
+  {
+    let token = localStorage.getItem("token");
+    console.log(token);
+    let header = new HttpHeaders(
+      {
+        Authorization: "Bearer " + token
+      }
+    )
+    return this.http.get(`${this.url}/doctorDetails/${doc_id}`,{'headers':header, responseType: 'json'})
   }
 }

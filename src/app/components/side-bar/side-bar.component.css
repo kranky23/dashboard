@@ -27,11 +27,14 @@ ul {
 }
 
 .sidebar ul li:hover {
-    background: lightgrey;
+    /* background: lightgrey;
+     */
+    background-color: lightblue;;
+
 }
 
 .sidebar ul li a:hover {
-    text-decoration: none;
+    text-decoration:underline;
 }
 
 .active-patient {
@@ -49,3 +52,4 @@ ul {
   background-color: red;
   color: white;
 }
+

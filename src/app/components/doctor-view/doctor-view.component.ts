@@ -38,7 +38,7 @@ export class DoctorViewComponent implements OnInit {
               private router:Router) { }
 
   ngOnInit(): void {
-    this.loginService.getDoctor().subscribe(
+    this.loginService.getDoctorDetails(localStorage.getItem("doctorId")).subscribe(
       (value: any) => {
         console.log("called init method")
         console.log("value is ",value)

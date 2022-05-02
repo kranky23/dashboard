@@ -16,8 +16,8 @@ export class HeaderComponent implements OnInit {
     private router: Router
     ) { }
   ngOnInit(): void {
-    this.loginService.getDoctor().subscribe(
-      (value: doctorInitial) => {
+    this.loginService.getDoctorDetails(localStorage.getItem("doctorId")).subscribe(
+      (value: any) => {
         this.doctorname = value
       }, 
       err => {
